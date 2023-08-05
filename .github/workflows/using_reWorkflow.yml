@@ -72,17 +72,20 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/resuable.yml
+    #uses: "D:\\giHub\\gitPractise\\05-Flow\\.github\\workflows\\resuable.yml"
+    #with:
+     # config-path: "D:\\giHub\\gitPractise\\05-Flow\\.github\\workflows\\resuable.yml"
     #steps:
     #  - name: Get build artifacts
     #    uses: actions/download-artifact@v3
-    with:
+    with: 
       artifact-name: dist-files
   print-deploy-result: 
     needs: deploy
     runs-on: ubuntu-latest
     steps: 
       - name: print output
-        run: echo "${{ needs.deploy.outputs.result }}"
+        run: echo "${{ needs.deploy.outputs.result.value }}"
     #secrets: 
      # some-secrets: ${{ secrets.some-secrets }}  
      # - name: Output contents

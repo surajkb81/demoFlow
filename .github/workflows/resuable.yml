@@ -11,25 +11,25 @@ on:
      #   secrets: 
       #      some-secrets: 
        #         required: true
-       outputs:
-        result: 
-            descriptions: the result of deplyment
-            value: ${{ jobs.deploy.outcome }}
-jobs:
-    outputs:
-        outcome: ${{ steps.set-result.outputs.step-result }}
-            
-            
-    deploy: 
-        runs-on: uubuntu-latest
+        outputs: 
+            result: 
+                description: the result of deplyment
+                value: ${{ jobs.deploy.outputs.outcome }}
+jobs: 
+  deploy:
+        outputs: 
+            #outcome: ${{ steps.set-result.outputs.step-result }}
+            outcome: $GITHUB_OUTPUT
+        runs-on: ubuntu-latest
         steps: 
-            - name: Get build artifacts
-              uses: actions/download-artifact@v3
-              with: 
-                name: ${{ inputs.artifact-name }}
-            - name: list files in the output
-              run: ls
-            - name: output information
-              run: echo "deploying and uploading.."
-            - name: Set Result Output
-              rub: echo "::set-output name=step-result::success"
+        - name: Get build artifacts
+          uses: actions/download-artifact@v3
+          with: 
+           name: ${{ inputs.artifact-name }}
+        - name: list files in the output
+          run: ls
+        - name: output information
+          run: echo "deploying and uploading.."
+        - name: Set Result Output
+          id: set-result
+          run: echo "step-result=success" >> $GITHUB_OUTPUT
