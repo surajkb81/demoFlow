@@ -71,12 +71,12 @@ jobs:
           path: dist
   deploy:
     needs: build
-    uses: ./.github/workflows/resuable.yml
+    uses: ~/.github/workflows/resuable.yml
     #steps:
     #  - name: Get build artifacts
     #    uses: actions/download-artifact@v3
-     #   with:
-     #     name: dist-files
+    with:
+      artifact-name: dist-files
      # - name: Output contents
       #  run: ls
      # - name: Deploy
