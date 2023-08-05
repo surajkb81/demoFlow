@@ -1,0 +1,9 @@
+
+name: resuable Deploy
+on: workflow_call
+jobs:
+    deploy: 
+        runs-on: uubuntu-latest
+        steps: 
+            - name: output info
+              run: echo "deploying and uploading.."
