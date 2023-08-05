@@ -71,7 +71,7 @@ jobs:
           path: dist
   deploy:
     needs: build
-    uses: ~/.github/workflows/resuable.yml
+    uses: ./.github/workflows/resuable.yml
     #steps:
     #  - name: Get build artifacts
     #    uses: actions/download-artifact@v3
